@@ -38,76 +38,6 @@ public abstract class AppDatabase extends RoomDatabase {
                             Executors.newSingleThreadScheduledExecutor().execute(new Runnable() {
                                 @Override
                                 public void run() {
-                                    mInstance.menuDAO().insertMenu(
-                                            new Menu(
-                                                    "ก๋วยเตี๋ยวคั่วไก่", "อาหารคาว", 435, R.drawable.taewkai
-                                            )
-                                    );
-                                    mInstance.menuDAO().insertMenu(
-                                            new Menu(
-                                                    "ผัดไทยใส่ไข่", "อาหารคาว", 577, R.drawable.padthaikai
-                                            )
-                                    );
-                                    mInstance.menuDAO().insertMenu(
-                                            new Menu(
-                                                    "กุ้งอบวุ้นเส้น", "อาหารคาว", 300, R.drawable.kungwunsan
-                                            )
-                                    );
-                                    mInstance.menuDAO().insertMenu(
-                                            new Menu(
-                                                    "เกี๊ยวซ่า", "อาหารคาว", 63, R.drawable.keawsa
-                                            )
-                                    );
-                                    mInstance.menuDAO().insertMenu(
-                                            new Menu(
-                                                    "ข้าวแกงกะหรี่ไก่", "อาหารคาว", 470, R.drawable.karikai
-                                            )
-                                    );
-                                    mInstance.menuDAO().insertMenu(
-                                            new Menu(
-                                                    "ไก่ทอด", "อาหารคาว", 345, R.drawable.kaitod
-                                            )
-                                    );
-                                    mInstance.menuDAO().insertMenu(
-                                            new Menu(
-                                                    "ไก่ย่าง", "อาหารคาว", 165, R.drawable.kaiyang
-                                            )
-                                    );
-                                    mInstance.menuDAO().insertMenu(
-                                            new Menu(
-                                                    "ครัวซอง", "ขนมหวาน", 235, R.drawable.pousong
-                                            )
-                                    );
-                                    mInstance.menuDAO().insertMenu(
-                                            new Menu(
-                                                    "เฉาก๊วย", "ขนมหวาน", 90, R.drawable.shoukui
-                                            )
-                                    );
-                                    mInstance.menuDAO().insertMenu(
-                                            new Menu(
-                                                    "ซาหริ่ม", "ขนมหวาน", 217, R.drawable.sahlim
-                                            )
-                                    );
-                                    mInstance.menuDAO().insertMenu(
-                                            new Menu(
-                                                    "ชาดำเย็น", "เครื่องดื่ม", 110, R.drawable.chadamyen
-                                            )
-                                    );
-                                    mInstance.menuDAO().insertMenu(
-                                            new Menu(
-                                                    "ชานมเย็น", "เครื่องดื่ม", 100, R.drawable.chayen
-                                            )
-                                    );
-                                    mInstance.menuDAO().insertMenu(
-                                            new Menu(
-                                                    "ชานมไข่มุก", "เครื่องดื่ม", 360, R.drawable.chanomkaimook
-                                            )
-                                    );
-                                }
-                            });
-                            Executors.newSingleThreadScheduledExecutor().execute(new Runnable() {
-                                @Override
-                                public void run() {
 
                                     mInstance.menuDAO().insertMenu(
                                             new Menu(
@@ -162,6 +92,16 @@ public abstract class AppDatabase extends RoomDatabase {
                                     mInstance.menuDAO().insertMenu(
                                             new Menu(
                                                     "ชานมไข่มุก", "เครื่องดื่ม", 360, R.drawable.chanomkaimook
+                                            )
+                                    );
+                                    mInstance.menuDAO().insertMenu(
+                                            new Menu(
+                                                    "ก๋วยเตี๋ยวคั่วไก่", "อาหารคาว", 435, R.drawable.taewkai
+                                            )
+                                    );
+                                    mInstance.menuDAO().insertMenu(
+                                            new Menu(
+                                                    "ผัดไทยใส่ไข่", "อาหารคาว", 577, R.drawable.padthaikai
                                             )
                                     );
                                 }

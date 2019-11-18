@@ -47,14 +47,14 @@ public class MenuRepository {
         protected void onPostExecute(List<Menu> menus) {
             super.onPostExecute(menus);
 
-            mCallback.onGetLedger(menus);
+            mCallback.onGet(menus);
         }
 
 
     }
 
     public interface Callback {
-        void onGetLedger(List<Menu> itemList);
+        void onGet(List<Menu> itemList);
     }
 
     private static class InsertTask extends AsyncTask<Menu, Void, Void> {

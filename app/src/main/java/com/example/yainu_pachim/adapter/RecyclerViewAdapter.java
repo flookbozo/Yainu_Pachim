@@ -1,19 +1,21 @@
 package com.example.yainu_pachim.adapter;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.yainu_pachim.CalculatorCaloryActivity;
+import com.example.yainu_pachim.MainActivity;
 import com.example.yainu_pachim.MenuDetailsActivity;
 import com.example.yainu_pachim.R;
 import com.example.yainu_pachim.model.Menu;
@@ -22,9 +24,17 @@ import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
+
+
+    int totalcal = 0;
+
     private Context mContext;
     private int mResource;
     private List<Menu> mMenuList;
+
+
+    SparseBooleanArray itemStateArray = new SparseBooleanArray();
+
 
     public RecyclerViewAdapter(Context mContext, int mResource, List<Menu> mMenuList) {
         this.mContext = mContext;
@@ -48,6 +58,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.typeTextView.setText(menu.type);
         holder.menuImageView.setImageResource(menu.imageRes);
         holder.calCheckButton.setText(String.valueOf(menu.cal).concat(" kcal"));
+        holder.bind(position);
     }
 
     @Override
@@ -61,6 +72,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         private TextView typeTextView;
         private CheckBox calCheckButton;
 
+
         private Menu menu;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -69,6 +81,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             this.nameTextView = itemView.findViewById(R.id.menu_text_view);
             this.typeTextView = itemView.findViewById(R.id.type_text_view);
             this.calCheckButton = itemView.findViewById(R.id.cal_button);
+
+
+            calCheckButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int adapterPosition = getAdapterPosition();
+                    if(!itemStateArray.get(adapterPosition,false)) {
+                        calCheckButton.setChecked(true);
+                        itemStateArray.put(adapterPosition, true);
+                    }
+                    else {
+                        calCheckButton.setChecked(false);
+                        itemStateArray.put(adapterPosition, false);
+                    }
+                }
+
+            });
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -82,5 +111,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 }
             });
         }
+
+        void bind(int position) {
+            if (!itemStateArray.get(position,false)) {
+                calCheckButton.setChecked(false);
+            }
+            else {
+                calCheckButton.setChecked(true);
+            }
+        }
+
+
+
     }
 }
