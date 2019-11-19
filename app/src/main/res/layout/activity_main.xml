@@ -44,11 +44,11 @@
         android:gravity="center"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
+        android:text="เลือกเพื่อดูแคลอรี่ที่ได้รับ"
         android:textColor="#ffffffff"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="รวม" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

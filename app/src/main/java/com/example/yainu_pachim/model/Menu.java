@@ -5,7 +5,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "menu")
+@Entity(tableName = "menuitem")
 public class Menu {
 
     @PrimaryKey(autoGenerate = true)

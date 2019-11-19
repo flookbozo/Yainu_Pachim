@@ -13,7 +13,7 @@ import java.util.List;
 @Dao
 public interface MenuDAO {
 
-    @Query("SELECT * FROM menu")
+    @Query("SELECT * FROM menuitem")
     List<Menu> getAllMenu();
 
     @Insert

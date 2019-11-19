@@ -16,7 +16,7 @@ import java.util.concurrent.Executors;
 @Database(entities = {Menu.class},exportSchema = false, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
-    private static final String DB_NAME = "menu.db";
+    private static final String DB_NAME = "menuu.db";
 
     public abstract MenuDAO menuDAO();
 
@@ -44,6 +44,11 @@ public abstract class AppDatabase extends RoomDatabase {
                                                     "กุ้งอบวุ้นเส้น", "อาหารคาว", 300, R.drawable.kungwunsan
                                             )
                                     );
+                                }
+                            });
+                            Executors.newSingleThreadScheduledExecutor().execute(new Runnable() {
+                                @Override
+                                public void run() {
                                     mInstance.menuDAO().insertMenu(
                                             new Menu(
                                                     "เกี๊ยวซ่า", "อาหารคาว", 63, R.drawable.keawsa
