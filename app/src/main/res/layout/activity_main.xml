@@ -34,5 +34,21 @@
         app:layout_constraintBottom_toTopOf="@+id/female_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/total_text_view" />
+
+    <TextView
+        android:id="@+id/total_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#CD5C5656"
+        android:gravity="center"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:textColor="#ffffffff"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="รวม" />
 </androidx.constraintlayout.widget.ConstraintLayout>

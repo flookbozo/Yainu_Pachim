@@ -1,6 +1,5 @@
 package com.example.yainu_pachim.adapter;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.SparseBooleanArray;
@@ -10,12 +9,11 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.yainu_pachim.CalculatorCaloryActivity;
-import com.example.yainu_pachim.MainActivity;
 import com.example.yainu_pachim.MenuDetailsActivity;
 import com.example.yainu_pachim.R;
 import com.example.yainu_pachim.model.Menu;
@@ -24,13 +22,11 @@ import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
-
-
-    int totalcal = 0;
-
     private Context mContext;
     private int mResource;
     private List<Menu> mMenuList;
+
+    int totalcal = 0;
 
 
     SparseBooleanArray itemStateArray = new SparseBooleanArray();
@@ -90,13 +86,24 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     if(!itemStateArray.get(adapterPosition,false)) {
                         calCheckButton.setChecked(true);
                         itemStateArray.put(adapterPosition, true);
+                        totalcal += menu.cal;
+                        Toast.makeText(
+                                mContext,
+                                "คุณเลือกไปทั้งหมด "+totalcal+" กิโลแคลอรี่",
+                                Toast.LENGTH_SHORT
+                        ).show();
                     }
                     else {
                         calCheckButton.setChecked(false);
                         itemStateArray.put(adapterPosition, false);
+                        totalcal -= menu.cal;
+                        Toast.makeText(
+                                mContext,
+                                "คุณเลือกไปทั้งหมด "+totalcal+" กิโลแคลอรี่",
+                                Toast.LENGTH_SHORT
+                        ).show();
                     }
                 }
-
             });
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -120,8 +127,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 calCheckButton.setChecked(true);
             }
         }
-
-
-
     }
+
 }

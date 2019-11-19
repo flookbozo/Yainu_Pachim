@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.TextView;
 
 import com.example.yainu_pachim.adapter.RecyclerViewAdapter;
 import com.example.yainu_pachim.model.Menu;
@@ -28,7 +29,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        relodeData();
+        /*relodeData();*/
+
+        /*Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                AppDatabase db = AppDatabase.getInstance(MainActivity.this);
+                List<Menu> itemList = db.menuDAO().getAllMenu();
+                RecyclerViewAdapter adapter = new RecyclerViewAdapter(
+                        MainActivity.this,
+                        R.layout.menu,
+                        itemList
+                );
+                int totalco = adapter.totalcalory();
+                TextView total = findViewById(R.id.total_text_view);
+                total.setText(String.valueOf(totalco));
+            }
+        });
+        t.start();*/
 
         Button maleButton = findViewById(R.id.male_button);
         maleButton.setOnClickListener(new View.OnClickListener() {
@@ -51,11 +69,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /*@Override
+    @Override
     protected void onResume() {
         super.onResume();
         relodeData();
-    }*/
+    }
 
     private void relodeData() {
         MenuRepository repo = new MenuRepository(MainActivity.this);

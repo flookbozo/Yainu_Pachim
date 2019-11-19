@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CalculatorCaloryActivity extends AppCompatActivity {
 
@@ -23,29 +24,45 @@ public class CalculatorCaloryActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         mSex = intent.getIntExtra("sex",0);
-        
+
+        ActionBar ab = getSupportActionBar();
+        ab.setTitle(mSex == 0 ? "ค่า REE ของเพศชาย" : "ค่า REE ของเพศหญิง");
+
         Button enter = findViewById(R.id.enter_button);
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 EditText ageEditText = findViewById(R.id.age_edit_text);
-                int ageEdit = Integer.parseInt(ageEditText.getText().toString());
+                String ageEdit = ageEditText.getText().toString();
 
                 EditText weightEditText = findViewById(R.id.weight_edit_text);
-                int weightEdit = Integer.parseInt(weightEditText.getText().toString());
+                String weightEdit = weightEditText.getText().toString();
 
                 EditText heightEditText = findViewById(R.id.height_edit_text);
-                int heightEdit = Integer.parseInt(heightEditText.getText().toString());
+                String heightEdit = heightEditText.getText().toString();
 
-                calperdayfemale = ((10*weightEdit)+(6.25*heightEdit)-(5*ageEdit))-161;
+                if (ageEdit.isEmpty() || weightEdit.isEmpty() || heightEdit.isEmpty()) {
+                    Toast.makeText(
+                            CalculatorCaloryActivity.this,
+                            "All fields are required",
+                            Toast.LENGTH_SHORT
+                    ).show();
+                } else {
+                    int age = Integer.parseInt(ageEdit);
+                    int weight = Integer.parseInt(weightEdit);
+                    int height = Integer.parseInt(heightEditText.getText().toString());
 
-                calperdaymale = ((10*weightEdit)+(6.25*heightEdit)-(5*ageEdit))+5;
+                    calperdayfemale = ((10 * weight) + (6.25 * height) - (5 * age)) - 161;
 
-                TextView TotalCalTextView = findViewById(R.id.total_cal_cover_text_view);
-                TotalCalTextView.setText(String.valueOf(mSex == 0? calperdaymale : calperdayfemale).concat( "กิโลแคลอรี่"));
+                    calperdaymale = ((10 * weight) + (6.25 * height) - (5 * age)) + 5;
 
-                TextView descripText = findViewById(R.id.descrip_text_view);
-                descripText.setText(mSex == 0? "เพียงพอต่อความต้องการในหนึ่งวันของเพศชาย" : "เพียงพอต่อความต้องการในหนึ่งวันของเพศหญิง");
+                    TextView TotalCalTextView = findViewById(R.id.total_cal_cover_text_view);
+                    TotalCalTextView.setText(String.valueOf(mSex == 0 ? calperdaymale : calperdayfemale).concat("กิโลแคลอรี่"));
+
+                    TextView descripText = findViewById(R.id.descrip_text_view);
+                    descripText.setText(mSex == 0 ? "เพียงพอต่อความต้องการในหนึ่งวันของเพศชาย" : "เพียงพอต่อความต้องการในหนึ่งวันของเพศหญิง");
+
+                }
             }
         });
 
